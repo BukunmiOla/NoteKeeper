@@ -1,11 +1,26 @@
 package com.example.notekeeper
 
-class DataManager {
+object DataManager {
     val courses = HashMap<String, CourseInfo>()
     val notes = ArrayList<NoteInfo>()
 
     init {
         initialiseCourses()
+        initialiseNotes()
+    }
+
+    private fun initialiseNotes() {
+        var note = NoteInfo("Android Programming with Intents",
+            "rtnehrjwhtkeht,lkrh;kyjltjyhtjkhkjgjerbtjrlhuthjrnjyljtlu,ymu;jkrmuhjylyjkjrtjkyktjkyl;lyyklhjlkyjhjbtjjlhkljkl;jllkj.k,.j;l;jljhoifhjytp[';")
+        notes.add(note)
+        note = NoteInfo("Android Async Programming an Services", "jhiiobuhuyi7rr5tvygboiju876renb34d5654ertfghbjiikn bvhgfcftvg .title,")
+        notes.add(note)
+        note = NoteInfo("Java Fundamentals", "course.title,")
+        notes.add(note)
+        note = NoteInfo("Java Fundamentals: The core platform", "kn;lhgtdrghfswrdfcgjuhl;njjnijgyb7jbkknohyiu67nioojjjjjjknobl")
+        notes.add(note)
+        note = NoteInfo("Android Async Programming an Services", "course.title,")
+        notes.add(note)
     }
 
     private fun initialiseCourses(){
