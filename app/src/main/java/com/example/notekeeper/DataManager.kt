@@ -10,16 +10,17 @@ object DataManager {
     }
 
     private fun initialiseNotes() {
-        var note = NoteInfo("Android Programming with Intents",
+        var note = NoteInfo(
+            CourseInfo("android_intents", "Android Programming with Intents"),"Android Programming with Intents",
             "rtnehrjwhtkeht,lkrh;kyjltjyhtjkhkjgjerbtjrlhuthjrnjyljtlu,ymu;jkrmuhjylyjkjrtjkyktjkyl;lyyklhjlkyjhjbtjjlhkljkl;jllkj.k,.j;l;jljhoifhjytp[';")
         notes.add(note)
-        note = NoteInfo("Android Async Programming an Services", "jhiiobuhuyi7rr5tvygboiju876renb34d5654ertfghbjiikn bvhgfcftvg .title,")
+        note = NoteInfo(CourseInfo("android_async","Android Async Programming an Services"),"Android Async Programming an Services", "jhiiobuhuyi7rr5tvygboiju876renb34d5654ertfghbjiikn bvhgfcftvg .title,")
         notes.add(note)
-        note = NoteInfo("Java Fundamentals", "course.title,")
+        note = NoteInfo(CourseInfo("java_lang", "Java Fundamentals"),"Java Fundamentals", "course.title,")
         notes.add(note)
-        note = NoteInfo("Java Fundamentals: The core platform", "kn;lhgtdrghfswrdfcgjuhl;njjnijgyb7jbkknohyiu67nioojjjjjjknobl")
+        note = NoteInfo(CourseInfo("java_core","Java Fundamentals: The core platform"),"Java Fundamentals: The core platform", "kn;lhgtdrghfswrdfcgjuhl;njjnijgyb7jbkknohyiu67nioojjjjjjknobl")
         notes.add(note)
-        note = NoteInfo("Android Async Programming an Services", "course.title,")
+        note = NoteInfo(CourseInfo("android_async","Android Async Programming an Services"),"Android Async Programming an Services", "course.title,")
         notes.add(note)
     }
 
