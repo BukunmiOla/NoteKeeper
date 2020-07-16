@@ -2,6 +2,8 @@ package com.example.notekeeper
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -32,5 +34,26 @@ class MainActivity : AppCompatActivity() {
 
         val coursePosition = DataManager.courses.values.indexOf(note.course)
         spinnerCourses.setSelection(coursePosition)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            R.id.action_settings -> true
+            R.id.action_next -> {
+                moveNext()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun moveNext() {
+        ++notePosition
+        displayNote()
     }
 }
