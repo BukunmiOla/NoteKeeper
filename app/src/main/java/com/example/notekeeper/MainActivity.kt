@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -54,6 +55,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun moveNext() {
         ++notePosition
-        displayNote()
+        try {
+            displayNote()
+        } catch (e: Exception) {
+            Toast.makeText(this, "End of notes", Toast.LENGTH_SHORT).show()
+        }
     }
 }
