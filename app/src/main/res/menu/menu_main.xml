@@ -5,6 +5,9 @@
         android:id="@+id/action_save"
         android:title="@string/save" />
     <item
+        android:id="@+id/action_previous"
+        android:title="@string/previous" />
+    <item
         android:id="@+id/action_next"
         android:title="@string/next" />
     <item
