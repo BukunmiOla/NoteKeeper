@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         val coursePosition = DataManager.courses.values.indexOf(note.course)
         spinnerCourses.setSelection(coursePosition)
+        invalidateOptionsMenu()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -65,29 +66,20 @@ class MainActivity : AppCompatActivity() {
             "next" -> ++notePosition
             "previous" -> --notePosition
         }
-        try {
-            displayNote()
-        } catch (e: Exception) {
-            Toast.makeText(this, "End of notes", Toast.LENGTH_SHORT).show()
-        }
-        invalidateOptionsMenu()
+        displayNote()
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        if(notePosition > DataManager.notes.lastIndex || notePosition < 0){
-            var menuItem = menu?.findItem(R.id.action_next)
-            when (action){
-                "next" -> menuItem = menu?.findItem(R.id.action_next)
-                "previous" -> menuItem = menu?.findItem(R.id.action_previous)
-            }
 
-
-            if (menuItem != null){
+        val menuItem = when (notePosition){
+            DataManager.notes.lastIndex ->  menu?.findItem(R.id.action_next)
+                0 ->  menu?.findItem(R.id.action_previous)
+            else -> null
+        }
+        if (menuItem != null){
                 menuItem.icon = getDrawable(R.drawable.ic_block)
                 menuItem.isEnabled = false
             }
-
-        }
 
         return super.onPrepareOptionsMenu(menu)
     }
