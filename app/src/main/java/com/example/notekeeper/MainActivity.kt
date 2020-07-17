@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private var notePosition = PositionNotSet
+    private var action : String = "null"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,15 +47,28 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId){
             R.id.action_settings -> true
             R.id.action_next -> {
-                moveNext()
+                action = "next"
+                moveToNote()
+                true
+            }
+            R.id.action_previous -> {
+                action = "previous"
+                moveToNote()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    private fun moveNext() {
-        ++notePosition
-        displayNote()
+    private fun moveToNote() {
+        when (action){
+            "next" -> ++notePosition
+            "previous" -> --notePosition
+        }
+        try {
+            displayNote()
+        } catch (e: Exception) {
+            Toast.makeText(this, "End of notes", Toast.LENGTH_SHORT).show()
+        }
     }
 }
