@@ -27,6 +27,10 @@ class MainActivity : AppCompatActivity() {
 
         if (notePosition != PositionNotSet)
             displayNote()
+        else {
+            DataManager.notes.add(NoteInfo())
+            notePosition = DataManager.notes.lastIndex
+        }
     }
 
     private fun displayNote() {
@@ -67,6 +71,7 @@ class MainActivity : AppCompatActivity() {
             "previous" -> --notePosition
         }
         displayNote()
+
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
@@ -82,5 +87,17 @@ class MainActivity : AppCompatActivity() {
             }
 
         return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        saveNote()
+    }
+
+    private fun saveNote() {
+        val note = DataManager.notes[notePosition]
+        note.title = noteTitleEt.text.toString()
+        note.text = noteTextEt.text.toString()
+        note.course = spinnerCourses.selectedItem as CourseInfo
     }
 }
