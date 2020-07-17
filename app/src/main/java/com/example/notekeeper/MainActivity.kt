@@ -70,5 +70,25 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Toast.makeText(this, "End of notes", Toast.LENGTH_SHORT).show()
         }
+        invalidateOptionsMenu()
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        if(notePosition > DataManager.notes.lastIndex || notePosition < 0){
+            var menuItem = menu?.findItem(R.id.action_next)
+            when (action){
+                "next" -> menuItem = menu?.findItem(R.id.action_next)
+                "previous" -> menuItem = menu?.findItem(R.id.action_previous)
+            }
+
+
+            if (menuItem != null){
+                menuItem.icon = getDrawable(R.drawable.ic_block)
+                menuItem.isEnabled = false
+            }
+
+        }
+
+        return super.onPrepareOptionsMenu(menu)
     }
 }
